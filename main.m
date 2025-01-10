@@ -9,9 +9,9 @@ function main
     maxNei = n;
     T = 50;
     alpha = [0.25, 0.5, 0.75];
-    K = [0.25, 0.5, 0.75];
-    % alpha = 0.25;
-    % K = 0.25;
+    % K = [0.25, 0.5, 0.75];
+    K = [0.05, 0.1, 0.15, 0.2];
+
     
     numIter = 20;
     thre = 0.05;
@@ -20,6 +20,7 @@ function main
     for i = 1:length(alpha)
         for j = 1:length(K)
             namePara = helperNameGenerator(n, alpha(i), K(j));
+            % disp(namePara);
             JGRRun(n, T, alpha(i), K(j), numIter, namePara, thre, maxNei);
         end
     end
