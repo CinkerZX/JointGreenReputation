@@ -37,12 +37,12 @@ function JGRRun(N, T, Alpha, k, numIter, namePara, thre, maxNei)
     numIterations = numIter;  % Number of repetitions for the experiment
 
     % Define the Excel file names with the parameter-based prefix
-    addpath('.\Pre-exp\Data');
+    addpath('.\Pre-exp\DataN100R321');
     
     % Include the generated namePara in the filenames
-    dynamicT2Gfile = ['Pre-exp\Data\', namePara, '_dynamicT2G.xlsx'];
-    dynamicJRfile = ['Pre-exp\Data\', namePara, '_dynamicJR.xlsx'];
-    dynamicAdjMatrixfile = ['Pre-exp\Data\', namePara, '_dynamicAdjMatrix.xlsx'];
+    dynamicT2Gfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicT2G.xlsx'];
+    dynamicJRfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicJR.xlsx'];
+    dynamicAdjMatrixfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicAdjMatrix.xlsx'];
     
     % Start rows for writing data
     startRow = 1;
@@ -58,7 +58,13 @@ function JGRRun(N, T, Alpha, k, numIter, namePara, thre, maxNei)
         adjMatrix = zeros(n, n, (t+1));
     
         % Let the node be equally distributed
-        numSuppliers = round(n * 0.33);
+        % 1:1:1
+        % numSuppliers = round(n * 0.33);
+        % numManufacturers = round(n * 0.33);
+        % numRetailers = n - numSuppliers - numManufacturers;
+
+        % 3:2:1
+        numSuppliers = round(n * 0.5);
         numManufacturers = round(n * 0.33);
         numRetailers = n - numSuppliers - numManufacturers;
         
