@@ -13,7 +13,8 @@ function main
 
     
     numIter = 20;
-    thre = 0.05;
+    % thre = 0.05; % DataN100R111, DataN100R321
+    thre = 0.1; % DataN100R321Thre01
     
     
     for i = 1:length(alpha)

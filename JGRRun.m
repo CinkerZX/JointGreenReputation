@@ -37,12 +37,12 @@ function JGRRun(N, T, Alpha, k, numIter, namePara, thre, maxNei)
     numIterations = numIter;  % Number of repetitions for the experiment
 
     % Define the Excel file names with the parameter-based prefix
-    addpath('.\Pre-exp\DataN100R321');
+    addpath('.\Pre-exp\DataN100R321Thre01');
     
     % Include the generated namePara in the filenames
-    dynamicT2Gfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicT2G.xlsx'];
-    dynamicJRfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicJR.xlsx'];
-    dynamicAdjMatrixfile = ['Pre-exp\DataN100R321\', namePara, '_dynamicAdjMatrix.xlsx'];
+    dynamicT2Gfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicT2G.xlsx'];
+    dynamicJRfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicJR.xlsx'];
+    dynamicAdjMatrixfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicAdjMatrix.xlsx'];
     
     % Start rows for writing data
     startRow = 1;

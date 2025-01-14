@@ -13,7 +13,7 @@ function strategyFirstPlan2(currentJRValues, currentAdjMatrix, currentNumNeighbo
 
     global n supplierRange manufacturerRange retailerRange 
     global supplierAveJR manufacturerAveJR retailerAveJR
-    global strategyPlan
+    global strategyPlan threashold
 
     % Calculate peer average JR for each category
     supplierAveJR = mean(currentJRValues(supplierRange));
@@ -36,7 +36,7 @@ function strategyFirstPlan2(currentJRValues, currentAdjMatrix, currentNumNeighbo
     strategyPlan = zeros(n, 2);
         
     %% JR >= peerAverage AND #neighbor >= 2: do nothing ~ [0, NaN]
-    tolerance = 1e-10;  % Choose an appropriate tolerance level for your case
+    tolerance = threashold;  % Choose an appropriate tolerance level for your case
     ifBetterThanPeerAve = (currentJRPeerJRTable(:,1) >= currentJRPeerJRTable(:,2) | abs(currentJRPeerJRTable(:,1) - currentJRPeerJRTable(:,2)) < tolerance);
     needNothing = find(ifBetterThanPeerAve & ~currentNumNeighborTable(:,5));
     if ~isempty(needNothing) && all(needNothing <= n)
