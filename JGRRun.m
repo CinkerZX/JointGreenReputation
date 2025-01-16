@@ -40,13 +40,17 @@ function JGRRun(N, T, Alpha, k, numIter, namePara, thre, maxNei)
     addpath('.\Pre-exp\DataN100R321Thre01');
     
     % Include the generated namePara in the filenames
-    dynamicT2Gfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicT2G.xlsx'];
-    dynamicJRfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicJR.xlsx'];
-    dynamicAdjMatrixfile = ['Pre-exp\DataN100R321Thre01\', namePara, '_dynamicAdjMatrix.xlsx'];
-    
+    % dynamicT2Gfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicT2G.xlsx'];
+    % dynamicJRfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicJR.xlsx'];
+    % dynamicAdjMatrixfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicAdjMatrix.xlsx'];
+    dynamicT2Gfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicT2G.csv'];
+    dynamicJRfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicJR.csv'];
+    dynamicAdjMatrixfile = ['Pre-exp\DataN1000R321Thre005\', namePara, '_dynamicAdjMatrix.csv'];
+
+
     % Start rows for writing data
-    startRow = 1;
-    startRowAdj = 1;
+    % startRow = 1;
+    % startRowAdj = 1;
     
     for currentIteration = 1:numIterations
         % Initialize strategy plan n*2 matrix
@@ -95,13 +99,20 @@ function JGRRun(N, T, Alpha, k, numIter, namePara, thre, maxNei)
         
         % Every (t+1) rows of records represent one iteration; n columns
         % represent the companies
-        writematrix(dynamicT2GUpdate.', dynamicT2Gfile, 'Sheet', 1, 'Range', sprintf('A%d', startRow));
-        writematrix(dynamicJRUpdate.', dynamicJRfile, 'Sheet', 1, 'Range', sprintf('A%d', startRow));
-        startRow  = startRow + T +1;
+        % writematrix(dynamicT2GUpdate.', dynamicT2Gfile, 'Sheet', 1, 'Range', sprintf('A%d', startRow));
+        % writematrix(dynamicJRUpdate.', dynamicJRfile, 'Sheet', 1, 'Range', sprintf('A%d', startRow));
+        % startRow  = startRow + T +1;
+        % % Every n(t+1) rows of records represent one iteration, each n row
+        % % of records represent the adjecenty matrix a one time step
+        % matrix2D = reshape(permute(adjMatrix, [1, 3, 2]), n * (T+1), n);
+        % writematrix(matrix2D, dynamicAdjMatrixfile, 'Sheet', 1, 'Range', sprintf('A%d', startRowAdj))
+        % startRowAdj = startRowAdj + N*(T+1);
+
+        writematrix(dynamicT2GUpdate.', dynamicT2Gfile, 'WriteMode','append');
+        writematrix(dynamicJRUpdate.', dynamicJRfile, 'WriteMode','append');
         % Every n(t+1) rows of records represent one iteration, each n row
-        % of records represent the adjecenty matrix a one time step
-        matrix2D = reshape(permute(adjMatrix, [1, 3, 2]), n * (T+1), n);
-        writematrix(matrix2D, dynamicAdjMatrixfile, 'Sheet', 1, 'Range', sprintf('A%d', startRowAdj))
-        startRowAdj = startRowAdj + N*(T+1);
+        % of records represent the adjacency matrix at one time step
+        matrix2D = reshape(permute(adjMatrix, [1, 3, 2]), n * (T + 1), n);
+        writematrix(matrix2D, dynamicAdjMatrixfile, 'WriteMode','append');
     end
 end

@@ -5,17 +5,19 @@ function main
     % n = 20;
     % T = 20;
     % maxNei = 5;
-    n = 100;
-    maxNei = n;
+
+    % n = 100;
+    % thre = 0.05; % DataN100R111, DataN100R321
+    % thre = 0.1; % DataN100R321Thre01
+
+    n = 1000;
+    thre = 0.05; % DataN1000R321Thre005
+
+    maxNei = n;   
     T = 50;
     alpha = [0.25, 0.5, 0.75];
     K = [0.05, 0.1, 0.15, 0.2, 0.25, 0.5, 0.75];
-
-    
     numIter = 20;
-    % thre = 0.05; % DataN100R111, DataN100R321
-    thre = 0.1; % DataN100R321Thre01
-    
     
     for i = 1:length(alpha)
         for j = 1:length(K)

@@ -1,1 +1,7 @@
-Pre-exp
+Pre-exp/
+*.pdf
+.Rhistory
+*.csv
+*.xlsx
+PNGs/
+*.png
