@@ -11,7 +11,8 @@ function main
     % thre = 0.1; % DataN100R321Thre01
 
     n = 1000;
-    thre = 0.05; % DataN1000R321Thre005
+    % thre = 0.05; % DataN1000R321Thre005
+    thre = 0.1; % DataN1000R321Thre01
 
     maxNei = n;   
     T = 50;
