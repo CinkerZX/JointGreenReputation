@@ -1,5 +1,5 @@
 getwd()
-setwd('../../../Pre-exp/DataN1000R321Thre005')
+setwd('../../../Pre-exp/DataN1000R321Thre01')
 
 # Package
 library(data.table)
@@ -51,7 +51,7 @@ T2G_rate <- function(T) { # T is the termination step when N=100, T=50
   df_T2G$alpha_rep <- alpha_rep
   df_T2G$k_rep <- k_rep
   
-  write.csv(df_T2G, file = "../../Visualization/N1000_Rate321Thre005/Scurve/Scurvedf_T2G.csv", row.names = FALSE)
+  write.csv(df_T2G, file = "Scurvedf_T2G.csv", row.names = FALSE)
 }
 
 ## helper functions
@@ -86,7 +86,6 @@ T2G_rate_helper <- function(fileName, T, N){
   # This dataframe is 1020 * 4
   fileName <- sub("\\~\\$", "", fileName)
   myDataframe <- read_csv(fileName, col_names = FALSE)
-  # myDataframe <- read_csv("N1000Alpha025k005_dynamicJR.csv", col_names = FALSE)
   
   repeatTimes <- nrow(myDataframe)/(T+1)
   
@@ -125,7 +124,7 @@ T2G_rate(50)
 
 
 ## Step 2: Visualization
-setwd("../../Visualization/N1000_Rate321Thre005/Scurve")
+setwd("../../Visualization/N1000_Rate321Thre01/Scurve")
 df_T2G <- read_csv("Scurvedf_T2G.csv")
 
 generate_S_Curve <- function(k, df_T2G, x_max, y_min){
